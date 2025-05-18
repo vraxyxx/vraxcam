@@ -1,0 +1,122 @@
+/* General Body Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+  color: #f1f1f1;
+  overflow-x: hidden;
+}
+
+/* Full Width Image Banner */
+.full {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-bottom: 3px solid #FFD700;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+}
+
+/* Title Bar */
+h2 {
+  height: 60px;
+  background: linear-gradient(to right, #FFD700, #FF8C00);
+  color: #000;
+  text-shadow: 1px 1px 2px #fff;
+  line-height: 60px;
+  font-size: 26px;
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Article/Content Box */
+article {
+  padding: 25px;
+  margin: 20px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 15px #FFD70033;
+  text-align: center;
+}
+
+/* Paragraphs */
+p {
+  margin: 10px 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Dynamic Text Styling */
+.name,
+.number {
+  font-weight: bold;
+  color: #00ffc8;
+  text-shadow: 0 0 5px #00ffc8aa;
+}
+
+/* Button Base Styling */
+.btn {
+  display: inline-block;
+  padding: 14px 22px;
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to right, #007bff, #00d4ff);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 0 10px #00d4ffaa;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+  background: linear-gradient(to right, #0056b3, #00aaff);
+  transform: scale(1.05);
+}
+
+/* Disabled Button */
+.disabled {
+  background: #555 !important;
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Block Layout for Buttons */
+.btn-block {
+  width: 90%;
+  max-width: 320px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* WhatsApp Button Specific Style */
+.whatsappBtn {
+  background: linear-gradient(to right, #25D366, #128C7E);
+  box-shadow: 0 0 10px #25D366aa;
+}
+
+.whatsappBtn:hover {
+  background: linear-gradient(to right, #128C7E, #075E54);
+}
+
+/* Optional: Animated Glow on Headline */
+h2::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(to right, #FFD700, #FF8C00);
+  animation: glowLine 2s infinite linear;
+}
+
+@keyframes glowLine {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
