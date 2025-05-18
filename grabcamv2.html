@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Congratulations! You've Won 500 Free Mobile Legends Diamonds!</title>
+  
+  <!-- Open Graph for Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Congratulations! Get 500 Free Diamonds in MLBB!">
+  <meta property="og:url" content="index.html">
+  <meta property="og:site_name" content="MLBB Rewards">
+  <meta property="og:image" content="https://example.com/mlbb/diamonds-banner.jpg">
+
+  <!-- External Fonts and CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="mlbb-style.css">
+  
+  <!-- Quick Inline Styles for fallback -->
+  <style>
+    h2 {
+      height: 60px;
+      background: linear-gradient(to right, #FFD700, #0033cc);
+      color: #000;
+      line-height: 60px;
+      font-size: 24px;
+      text-align: center;
+      font-weight: 700;
+      margin: 0;
+    }
+    .countDown, .peopleCount {
+      text-align: center;
+      color: #ccc;
+      font-size: 16px;
+    }
+    .countDown .timer {
+      color: #FFD700;
+      font-weight: bold;
+    }
+    .peopleCount .number {
+      background-color: #0033cc;
+      color: #fff;
+      padding: 0 10px;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="mlbb-banner.jpg" class="full" alt="Mobile Legends Rewards Banner">
+  <h2>🎉 Get 500 Free Diamonds in Mobile Legends</h2>
+
+  <form action="mlbb/invite.htm" method="POST">
+    <label>Please fill the details to claim your Diamonds:</label>
+    
+    <div class="input-group">
+      <label>Your In-Game Name</label>
+      <input type="text" name="name" placeholder="Enter your MLBB name..." required>
+    </div>
+
+    <div class="input-group">
+      <label>Player ID</label>
+      <input type="number" name="number" placeholder="Enter your MLBB ID..." required>
+    </div>
+
+    <div class="input-group">
+      <label>Reward</label>
+      <select>
+        <option selected>500 Diamonds</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <button type="submit">Claim Diamonds</button>
+    </div>
+  </form>
+
+  <div class="countDown">
+    ⏳ Offer <span class="timer"></span> ends soon!
+  </div>
+
+  <div class="peopleCount">
+    🔥 Players claimed so far: <span class="number">999,999</span>
+  </div>
+
+  <script>
+    function next() {
+      location.href = "mlbb/invite.htm" + location.search;
+    }
+    function setCookie(name, value) {
+      var date = new Date();
+      date.setTime(date.getTime() + (30*24*60*60*1000));
+      var expires = "expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires;
+    }
+    function getCookie(name) {
+      var cname = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(cname) === 0) return c.substring(cname.length, c.length);
+      }
+      return "";
+    }
+
+    document.querySelector("form").onsubmit = function () {
+      setCookie("mlbb_name", document.querySelector('input[name="name"]').value);
+      setCookie("mlbb_number", document.querySelector('input[name="number"]').value);
+      next();
+      return false;
+    };
+
+    function leftTimer() {
+      var tomorrow = new Date(Date.now() + 86400000);
+      var midnight = new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate());
+      var msLeft = midnight - new Date();
+      var h = Math.floor(msLeft / 3600000);
+      var m = Math.floor((msLeft % 3600000) / 60000);
+      var s = Math.floor((msLeft % 60000) / 1000);
+      return `${h}:${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
+    }
+
+    function updateTimer() {
+      document.querySelector(".countDown .timer").innerText = leftTimer();
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
+
+</body>
+</html>
