@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Congratulations! You Have Won 500 Free Mobile Legends Diamonds</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Congratulations! You Have Won 500 Free Mobile Legends Diamonds">
+  <meta property="og:url" content="index.html">
+  <meta property="og:site_name" content="MLBB Rewards">
+  <meta property="og:image" content="https://example.com/mlbb/reward.png">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style type="text/css">
+    h2 {
+      height: 50px;
+      background-color: #1f1f1f;
+      color: #FFD700;
+      line-height: 50px;
+      font-size: 24px;
+      margin: 0;
+      text-align: center;
+    }
+    article {
+      padding: 1em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<script type="text/javascript">
+  function next() {
+    location.href = "https://example.com/mlbb/final.html" + location.search;
+  }
+
+  function setCookie(e, t) {
+    var n = new Date();
+    n.setTime(n.getTime() + 2592e6);
+    var o = "expires=" + n.toUTCString();
+    document.cookie = e + "=" + t + "; " + o;
+  }
+
+  function getCookie(e) {
+    for (var t = e + "=", n = document.cookie.split(";"), o = 0; o < n.length; o++) {
+      for (var i = n[o]; " " == i.charAt(0);) i = i.substring(1);
+      if (0 == i.indexOf(t)) return i.substring(t.length, i.length);
+    }
+    return "";
+  }
+
+  document.onmousedown = function(e) {
+    var message = "Right-click is disabled.";
+    if (navigator.appName == "Netscape" && e.which == 3 || navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) {
+      alert(message);
+      return false;
+    }
+  };
+</script>
+
+<img src="https://example.com/mlbb/banner.jpg" class="full">
+
+<h2>Claim Your Free 500 Diamonds</h2>
+
+<article>
+  <p>Hello <span class="name"></span></p>
+  <p>Your Mobile Legends ID <span class="number" style="color:#E60033;"></span> is eligible for 500 free Diamonds!</p>
+  <p style="font-weight: bold;">To claim, share this with 10 friends/groups on WhatsApp.</p>
+
+  <a href="whatsapp://send?text=*Claim 500 Mobile Legends Diamonds now!* 🎮 Limited offer! Click here: https://example.com/mlbb" 
+     data-action="share/whatsapp/share" 
+     class="whatsappBtn btn btn-block">Share with Friends</a>
+
+  <p style="font-weight: bold;">After sharing, click "Claim Now" below.</p><br>
+  <button class="btn btn-block nextPageBtn disabled">Claim Now</button>
+</article>
+
+<script type="text/javascript">
+  function whatsappClick() {
+    var sharesRequired = 10;
+    var count = sharesRequired;
+    var statusTexts = document.querySelectorAll(".whatsappTimeText");
+
+    document.querySelector(".whatsappBtn").onclick = function () {
+      setTimeout(function () {
+        count--;
+        if (count > 0) {
+          statusTexts.forEach(function (el) {
+            el.innerHTML = `You need to share with at least ${sharesRequired} friends/groups. ${count} remaining.`;
+          });
+        } else {
+          statusTexts.forEach(function (el) { el.innerHTML = ""; });
+          document.querySelector(".nextPageBtn").classList.remove("disabled");
+        }
+      }, 3000);
+    };
+
+    document.querySelector(".nextPageBtn").onclick = function () {
+      if (document.querySelector(".nextPageBtn").classList.contains("disabled")) {
+        alert(`You need to share with at least ${sharesRequired} friends/groups. ${count} remaining.`);
+      } else {
+        next();
+      }
+    };
+  }
+
+  whatsappClick();
+
+  document.querySelector(".name").innerHTML = getCookie("mlbb_reward_name") || "";
+  document.querySelector(".number").innerHTML = getCookie("mlbb_reward_id") || "";
+</script>
+
+</body>
+</html>
